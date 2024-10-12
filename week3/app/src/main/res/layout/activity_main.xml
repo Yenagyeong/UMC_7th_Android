@@ -34,8 +34,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_player_cl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="408dp"
+        android:layout_height="80dp"
         android:background="#F9F9F9"
         android:paddingVertical="5dp"
         app:layout_constraintBottom_toTopOf="@id/main_bnv"
@@ -53,17 +53,18 @@
 
             <TextView
                 android:id="@+id/main_miniplayer_title_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="66dp"
+                android:layout_height="match_parent"
                 android:text="라일락"
                 android:textColor="@color/black"
-                android:textSize="13sp" />
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/main_miniplayer_singer_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아이유 (IU)"
+                android:text="아이유(IU)"
                 android:textSize="12sp" />
 
         </LinearLayout>

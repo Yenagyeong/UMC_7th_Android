@@ -1,58 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
 
     <ImageButton
         android:id="@+id/song_setting_ib"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="366dp"
-        android:layout_marginBottom="666dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
+        android:contentDescription="설정 버튼"
         android:scaleType="fitXY"
         android:src="@drawable/btn_player_setting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="설정 버튼" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/song_eq_ib"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="331dp"
-        android:layout_marginBottom="666dp"
+        android:layout_marginTop="16dp"
         android:background="@color/white"
+        android:contentDescription="EQ 버튼"
         android:scaleType="fitXY"
         android:src="@drawable/btn_player_eq_off"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/song_down_ib"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toEndOf="@+id/song_setting_ib"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="EQ 버튼"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/song_down_ib"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="371dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@color/white"
+        android:contentDescription="닫기 버튼"
         android:scaleType="fitXY"
         android:src="@drawable/nugu_btn_down"
-        app:layout_constraintBottom_toBottomOf="@+id/song_eq_ib"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/song_eq_ib"
-        android:contentDescription="닫기 버튼" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/song_more_ib"
@@ -60,54 +53,62 @@
         android:layout_height="48dp"
         android:layout_marginTop="15dp"
         android:background="@color/white"
+        android:contentDescription="더보기 버튼"
         android:scaleType="fitXY"
         android:src="@drawable/btn_player_more"
         app:layout_constraintEnd_toEndOf="@+id/song_down_ib"
         app:layout_constraintStart_toStartOf="@+id/song_down_ib"
-        app:layout_constraintTop_toBottomOf="@+id/song_down_ib"
-        android:contentDescription="더보기 버튼" />
+        app:layout_constraintTop_toBottomOf="@+id/song_down_ib" />
 
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/song_music_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="LAILAC"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="611dp"
+        android:text="라일락"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/song_more_ib" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/artistName"
+        android:id="@+id/song_singer_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="582dp"
         android:text="아이유(IU)"
         android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/songTitle"
-        app:layout_constraintStart_toStartOf="@+id/songTitle"
-        app:layout_constraintTop_toBottomOf="@+id/songTitle" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/song_singer_more_iv"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:src="@drawable/btn_main_arrow_more"
-        app:layout_constraintBottom_toBottomOf="@+id/artistName"
-        app:layout_constraintStart_toEndOf="@+id/artistName"
-        app:layout_constraintTop_toTopOf="@+id/artistName" />
+        app:layout_constraintBottom_toBottomOf="@+id/song_singer_name_tv"
+        app:layout_constraintStart_toEndOf="@+id/song_singer_name_tv"
+        app:layout_constraintTop_toTopOf="@+id/song_singer_name_tv" />
 
 
     <ImageView
         android:id="@+id/song_album_iv"
         android:layout_width="280dp"
         android:layout_height="280dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_album_exp2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -168,8 +169,8 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
         android:background="@null"
         android:max="100000"
         android:paddingStart="0dp"
@@ -179,6 +180,7 @@
         android:progressTint="@color/song_player"
         android:thumb="@color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/song_like_iv_layout" />
 

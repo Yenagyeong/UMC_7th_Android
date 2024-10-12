@@ -3,7 +3,6 @@ package dduw.com.mobile.flo_clone
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log // 로그 추가
 import dduw.com.mobile.flo_clone.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,16 +19,16 @@ class MainActivity : AppCompatActivity() {
 
         // 미니 플레이어 클릭 시 SongActivity로 이동하며, 곡 정보 전달
         binding.mainPlayerCl.setOnClickListener {
-            val title = binding.mainMiniplayerTitleTv.text?.toString() ?: "Unknown Title"
-            val singer = binding.mainMiniplayerSingerTv.text?.toString() ?: "Unknown Artist"
-
-            Log.d("MainActivity", "Mini player clicked, Title: $title, Singer: $singer") // 디버깅 로그 추가
+            val songTitle = binding.mainMiniplayerTitleTv.text.toString()
+            val songSinger = binding.mainMiniplayerSingerTv.text.toString()
 
             val intent = Intent(this, SongActivity::class.java).apply {
-                putExtra("title", title)
-                putExtra("singer", singer)
+                putExtra("title", songTitle)
+                putExtra("singer", songSinger)
+                putExtra("second", 0)
+                putExtra("playTime", 60)
+                putExtra("isPlaying", false)
             }
-
             startActivity(intent)
         }
     }
