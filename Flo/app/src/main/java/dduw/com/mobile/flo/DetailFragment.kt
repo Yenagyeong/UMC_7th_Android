@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import dduw.com.mobile.flo.databinding.FragmentAlbumBinding
 import dduw.com.mobile.flo.databinding.FragmentDetailBinding
 
-class DetailFragment : Fragment() {
-
+class DetailFragment: Fragment() {
     lateinit var binding: FragmentDetailBinding
 
     override fun onCreateView(

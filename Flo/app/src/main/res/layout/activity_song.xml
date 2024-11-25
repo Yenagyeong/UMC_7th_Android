@@ -41,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/song_eq_ib" />
 
+
     <ImageButton
         android:id="@+id/song_more_ib"
         android:layout_width="25dp"
@@ -52,6 +53,7 @@
         app:layout_constraintEnd_toEndOf="@+id/song_down_ib"
         app:layout_constraintStart_toStartOf="@+id/song_down_ib"
         app:layout_constraintTop_toBottomOf="@+id/song_down_ib" />
+
 
     <TextView
         android:id="@+id/song_music_title_tv"
@@ -122,6 +124,7 @@
         app:layout_constraintStart_toStartOf="@+id/song_music_lyrics_01_iv"
         app:layout_constraintTop_toBottomOf="@+id/song_music_lyrics_01_iv" />
 
+
     <LinearLayout
         android:id="@+id/song_like_iv_layout"
         android:layout_width="wrap_content"
@@ -165,6 +168,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/song_like_iv_layout"  />
+
+    <!--    <View-->
+    <!--        android:id="@+id/song_progressbar_backgroud_view"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="2dp"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:layout_marginEnd="20dp"-->
+    <!--        android:background="@color/gray_color"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/song_like_iv_layout" />-->
+
+    <!--    <View-->
+    <!--        android:id="@+id/song_progressbar_view"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="2dp"-->
+    <!--        android:layout_marginStart="20dp"-->
+    <!--        android:background="@color/select_color"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@+id/song_progressbar_backgroud_view"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/song_progressbar_backgroud_view" />-->
 
     <TextView
         android:id="@+id/song_start_time_tv"
@@ -276,5 +301,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

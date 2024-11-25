@@ -6,40 +6,85 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import dduw.com.mobile.flo.databinding.FragmentLockerBinding
+import dduw.com.mobile.flo.databinding.FragmentAlbumBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dduw.com.mobile.flo.databinding.FragmentLockerBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LockerFragment : Fragment() {
-
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPagerAdapter: LockerVPAdapter
+    lateinit var binding: FragmentLockerBinding
+    private val information = arrayListOf("저장한곡", "음악파일", "저장앨범")
+    private lateinit var songDB: SongDatabase
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_locker, container, false)
+        binding = FragmentLockerBinding.inflate(inflater, container, false)
 
-        tabLayout = view.findViewById(R.id.locker_content_tb)
-        viewPager = view.findViewById(R.id.locker_content_vp)
-
-        // ViewPager2와 TabLayout 설정
-        viewPagerAdapter = LockerVPAdapter(this)
-        viewPager.adapter = viewPagerAdapter
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "앨범"
-                1 -> "저장된 곡"
-                else -> "미디어 파일"
-            }
+        val lockerAdapter = LockerVPAdapter(this)
+        binding.lockerContentVp.adapter = lockerAdapter
+        TabLayoutMediator(binding.lockerContentTb, binding.lockerContentVp){
+                tab, position ->
+            tab.text = information[position]
         }.attach()
 
-        return view
+        val bottomSheetFragment = BottomSheetFragment()
+        binding.lockerSelectAllTv.setOnClickListener {
+            binding.lockerSelectAllTv.text = "선택해제"
+            binding.lockerSelectAllTv.setTextColor(ContextCompat.getColor(requireContext(), R.color.select_color))
+            binding.lockerSelectAllImgIv.setImageResource(R.drawable.btn_playlist_select_on)
+
+            bottomSheetFragment.show(parentFragmentManager, "BottomSheetDialog")
+        }
+
+        binding.lockerLoginTv.setOnClickListener {
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initViews()
+    }
+    private fun getJwt() : Int {
+        val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf!!.getInt("jwt", 0)
+    }
+
+    private fun initViews() {
+        val jwt : Int = getJwt()
+        if (jwt == 0) {
+            binding.lockerLoginTv.text="로그인"
+            binding.lockerLoginTv.setOnClickListener {
+                startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            }
+        }
+
+        else {
+            binding.lockerLoginTv.text = "로그아웃"
+            binding.lockerLoginTv.setOnClickListener {
+                logout()
+                startActivity(Intent(requireActivity(), MainActivity::class.java))
+            }
+        }
+    }
+
+    private fun logout() {
+        val spf = activity?.getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        val editor = spf!!.edit()
+        editor.remove("jwt")
+        editor.apply()
     }
 }

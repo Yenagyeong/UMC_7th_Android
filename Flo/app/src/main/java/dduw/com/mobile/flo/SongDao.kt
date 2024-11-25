@@ -1,27 +1,34 @@
 package dduw.com.mobile.flo
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface SongDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(song: Song)
-
     @Insert
-    fun insertAll(songs: List<Song>)
+    suspend fun insert(song: Song)
 
     @Update
-    fun update(song: Song)
+    suspend fun update(song: Song)
 
-    @Query("SELECT * FROM SongTable WHERE id = :id")
-    fun getSongById(id: Int): Song?
+    @Delete
+    suspend fun delete(song: Song)
 
     @Query("SELECT * FROM SongTable")
-    fun getAllSongs(): List<Song>
+    suspend fun getSongs(): List<Song>
 
-    @Query("SELECT * FROM SongTable WHERE id > :currentId LIMIT 1")
-    fun getNextSong(currentId: Int): Song?
+    @Query("SELECT * FROM SongTable WHERE id = :id")
+    suspend fun getSong(id: Int): Song
 
-    @Query("SELECT * FROM SongTable WHERE id < :currentId ORDER BY id DESC LIMIT 1")
-    fun getPreviousSong(currentId: Int): Song?
+    @Query("UPDATE SongTable SET isLike = :isLike WHERE id = :id")
+    suspend fun updateIsLikeById(isLike: Boolean, id: Int): Int
+
+    @Query("DELETE FROM SongTable WHERE id = :id")
+    suspend fun deleteSongById(id: Int): Int
+
+    @Query("SELECT * FROM SongTable WHERE isLike = :isLike")
+    suspend fun getLikedSongs(isLike: Boolean): List<Song>
 }

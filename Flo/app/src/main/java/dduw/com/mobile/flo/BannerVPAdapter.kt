@@ -3,16 +3,20 @@ package dduw.com.mobile.flo
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class BannerVPAdapter(fragment:Fragment) :FragmentStateAdapter(fragment) {
+class BannerVPAdapter(fragment : Fragment) : FragmentStateAdapter(fragment) {
 
-    private val fragmentlist : ArrayList<Fragment> = ArrayList()
+    private val fragmentList : ArrayList<Fragment> = ArrayList()
 
-    override fun getItemCount(): Int = fragmentlist.size
+    override fun getItemCount(): Int {
+        return fragmentList.size
+    }
 
-    override fun createFragment(position: Int): Fragment = fragmentlist[position]
+    override fun createFragment(position: Int): Fragment {
+        return fragmentList[position]
+    }
 
-    fun addFragment(fragment: Fragment){
-        fragmentlist.add(fragment)
-        notifyItemInserted(fragmentlist.size-1)
+    fun addFragment(fragment: Fragment) {
+        fragmentList.add(fragment)
+        notifyItemInserted(fragmentList.size-1)
     }
 }
