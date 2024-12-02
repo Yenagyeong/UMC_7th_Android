@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LoginTest</string>
+    <string name="title_text">KAKAO LOGIN TEST</string>
+    <string name="login_button_text">Login with Kakao</string>
+    <string name="logout_button_text">Logout</string>
+    <string name="user_info_placeholder">User Info</string>
+</resources>
