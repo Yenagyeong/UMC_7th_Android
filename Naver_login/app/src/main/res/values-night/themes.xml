@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme for Night Mode -->
+    <style name="Theme.Naver_login" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your dark mode theme properties here -->
+    </style>
+</resources>
